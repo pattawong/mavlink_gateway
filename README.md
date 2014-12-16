@@ -17,3 +17,8 @@ Code consist of 4 main part
 2.read_ground function : Grab and Process Portable Ground Station Message
 3.HeartbeatTimer function : Run every x ms to check telemetry status
 4.send_# function : Send translated MAVLink Message to Portable Ground Station
+
+Include Flight Controller Simulator
+-Using PyMAVLink for Python Biniding
+-Using PyQT for GUI
+-Simulate basic MAVLink message ex.HEARTBEAT,ATTITUDE..
