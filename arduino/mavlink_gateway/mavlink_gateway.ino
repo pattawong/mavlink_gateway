@@ -61,7 +61,7 @@ byte stx = 0xFE;
 //Enable/Disable Stream command from GCS
 boolean stream_enable = true;
 //Enable/Disable Stream to PC
-boolean pc_enable = false;
+boolean pc_enable = true;
 
 typedef union {
   float floatingPoint;
@@ -78,9 +78,9 @@ void setup()
 
   //Setup Ethernet
   uint8_t mac[6] = {  
-    0x00,0x01,0x02,0x03,0x04,0x05               };
+    0x00,0x01,0x02,0x03,0x04,0x05                           };
 
-  Ethernet.begin(mac,IPAddress(192,168,1,6));
+  Ethernet.begin(mac,IPAddress(192,168,1,50));
 
   //Setup MAVLink Port
   //mavlink_comm_0_port = &Serial;
@@ -257,8 +257,10 @@ void sent_msg_11()
   sent_string(gs_flight_mode); //Flight Mode
   sent_int_8(gs_mav_type); //Mav Type 2:QuadRotor
   sent_int_8(gs_arm); //Arm/Disarm 0:disarm , 1;arm
-
-    //Serial.println("Sent 11");
+  sent_int_16(gs_volt_batt); //Battery Voltage
+  sent_int_16(gs_current_batt); //Battery Current
+  sent_int_8(gs_percent_batt); //Battery Percent
+  //Serial.println("Sent 11");
 }
 
 void sent_msg_12()
@@ -266,10 +268,10 @@ void sent_msg_12()
   sent_int_8(stx); //Start Byte
   sent_int_8(12); //Msg id 12
   sent_int_8(gs_fix_type); //GPS Fix Type
-  sent_int_16(gs_hdop); //GPS Hdop
   sent_int_8(gs_num_sat); //GPS Visible Sat.
-  sent_int_16(gs_volt_batt); //Battery Voltage
-
+  sent_int_32(gs_lat); //GPS Lat
+  sent_int_32(gs_lon); //GPS Lon
+  sent_int_16(gs_hdop); //GPS Hdop
   //Serial.println("Sent 12");
 }
 
@@ -319,10 +321,10 @@ void request_mavlink_rates()
     MAV_DATA_STREAM_POSITION,
     MAV_DATA_STREAM_EXTRA1, 
     MAV_DATA_STREAM_EXTRA2,
-    MAV_DATA_STREAM_EXTRA3                                                      };
+    MAV_DATA_STREAM_EXTRA3                                                                  };
 
   const uint16_t MAVRates[maxStreams] = {
-    0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05                    };
+    0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05                                };
 
 
   /*
@@ -363,10 +365,10 @@ void read_ground()
     }
     //In case of running out of buffer
     if(gs_count>=49)
-     {
-       gs_count = 0;
-       clear_gs();
-     }
+    {
+      gs_count = 0;
+      clear_gs();
+    }
   }
 
   //process_gs();
@@ -377,15 +379,15 @@ void process_gs()
 {
   if(gs_msg[0]==stx)
   {
-    Serial.println("Found STX ");
-    /*
-    Serial.print("\nRAW ");
+    /*Serial.println("Found STX ");
+     
+     Serial.print("\nRAW ");
      Serial.print(String(gs_msg[0], HEX));
      Serial.print(" ");
      Serial.print(String(gs_msg[1], HEX));
      Serial.print(" ");
      Serial.println(String(gs_msg[2], HEX));*/
-    Serial.print("\ncmd_id : ");
+    Serial.print("cmd_id : ");
     Serial.println(gs_msg[1]);
     switch (gs_msg[1]) {
       /*    case 0x00:
@@ -402,13 +404,13 @@ void process_gs()
        break;
        */    case 0x32: //RC Override
       int rc_override[] = {
-        0,0,0,0,0,0,0,0            }; 
+        0,0,0,0,0,0,0,0                                                }; 
       rc_override[2] = read_int16(gs_msg[2],gs_msg[3]);
       rc_override[3] = read_int16(gs_msg[4],gs_msg[5]);
       rc_override[1] = read_int16(gs_msg[6],gs_msg[7]);
       rc_override[0] = read_int16(gs_msg[8],gs_msg[9]);
-      rc_override[2] = 0;
-      rc_override[3] = 0;
+      //rc_override[2] = 0;
+      //rc_override[3] = 0;
       Serial.print("RC Override Recv : ");
       for(int i=0;i<8;i++)
       {
@@ -488,8 +490,9 @@ void read_mavlink(){
       case MAVLINK_MSG_ID_SYS_STATUS:
         { 
           gs_volt_batt = (mavlink_msg_sys_status_get_voltage_battery(&msg) ); //1 equal 1 milli volt
-          //mavlink_msg_sys_status_get_current_battery(&msg); //1 equal 10 milli amp
-          //mavlink_msg_sys_status_get_battery_remaining(&msg);
+          gs_current_batt = (mavlink_msg_sys_status_get_current_battery(&msg) ); //1 equal 10 milli amp
+          gs_percent_batt = (mavlink_msg_sys_status_get_battery_remaining(&msg) ); 
+
         }
         break;
 
@@ -498,6 +501,8 @@ void read_mavlink(){
           gs_fix_type = mavlink_msg_gps_raw_int_get_fix_type(&msg); //0:no gps,1:no fix,2:2D fix,3:3d fix
           gs_hdop = mavlink_msg_gps_raw_int_get_eph(&msg); //hdop dilution of position in cm (m*100) 
           gs_num_sat = mavlink_msg_gps_raw_int_get_satellites_visible(&msg);
+          gs_lat = mavlink_msg_gps_raw_int_get_lat(&msg);
+          gs_lon = mavlink_msg_gps_raw_int_get_lon(&msg);
         }
         break;
 
@@ -554,25 +559,25 @@ void read_mavlink(){
         Serial.print(mavlink_msg_rc_channels_raw_get_chan7_raw(&msg));
         Serial.print(",");
         Serial.println(mavlink_msg_rc_channels_raw_get_chan8_raw(&msg));
-       /* if(gs_ch_raw[0]>=1600) { 
-          mavlink_msg_command_long_send(MAVLINK_COMM_1,1, 1,MAV_CMD_COMPONENT_ARM_DISARM,0,1,0,0,0,0,0,0); 
-          Serial.println("ARM");
-        }//Arm 
-        if(gs_ch_raw[0]<=1400) { 
-          mavlink_msg_command_long_send(MAVLINK_COMM_1,1, 1,MAV_CMD_COMPONENT_ARM_DISARM,0,0,0,0,0,0,0,0); 
-          Serial.println("DISARM");
-        }//Arm 
-
-        if(gs_ch_raw[1]>=1600) 
-        {
-          Serial.println("OVerride");
-          mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,1, 1 , 0 , 0 , 1800 , 0 , 0 , 0 , 0 , 0 ); //Sent RC Override
-        }
-        if(gs_ch_raw[1]<=1400) 
-        {
-          Serial.println("De-override");
-          mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,1, 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ); //Sent RC Override
-        }*/
+        /* if(gs_ch_raw[0]>=1600) { 
+         mavlink_msg_command_long_send(MAVLINK_COMM_1,1, 1,MAV_CMD_COMPONENT_ARM_DISARM,0,1,0,0,0,0,0,0); 
+         Serial.println("ARM");
+         }//Arm 
+         if(gs_ch_raw[0]<=1400) { 
+         mavlink_msg_command_long_send(MAVLINK_COMM_1,1, 1,MAV_CMD_COMPONENT_ARM_DISARM,0,0,0,0,0,0,0,0); 
+         Serial.println("DISARM");
+         }//Arm 
+         
+         if(gs_ch_raw[1]>=1600) 
+         {
+         Serial.println("OVerride");
+         mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,1, 1 , 0 , 0 , 1800 , 0 , 0 , 0 , 0 , 0 ); //Sent RC Override
+         }
+         if(gs_ch_raw[1]<=1400) 
+         {
+         Serial.println("De-override");
+         mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,1, 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ); //Sent RC Override
+         }*/
         break;
 
       case MAVLINK_MSG_ID_COMMAND_ACK :
@@ -667,25 +672,28 @@ void sent_int_8_udp(int value)
 
 void sent_int_16_udp(int16_t value)
 {
-  /*
-   Serial.print(String(value,BIN));
-   Serial.println("");
-   Serial.print(String((value & 0xFF00)>>8,BIN));
-   Serial.print(":");
-   Serial.println(String(value & 0x00FF,BIN));
-   */
   udp.write((value & 0xFF00)>>8);
   udp.write(value & 0x00FF);
+}
+void sent_int_32_udp(int32_t value)
+{
+  udp.write((value & 0xFF000000)>>24);
+  udp.write((value & 0x00FF0000)>>16);
+  udp.write((value & 0x0000FF00)>>8);
+  udp.write( value & 0x000000FF);
 }
 
 void sent_msg_11_udp()
 {
   udp.beginPacket(IPAddress(192,168,1,44),5000);
-  udp.write(stx);
-  udp.write(11);
+  sent_int_8_udp(stx);
+  sent_int_8_udp(11);
   udp.print(gs_flight_mode);
-  udp.write(gs_mav_type);
-  udp.write(gs_arm);
+  sent_int_8_udp(gs_mav_type);
+  sent_int_8_udp(gs_arm);
+  sent_int_16_udp(gs_volt_batt);
+  sent_int_16_udp(gs_current_batt);
+  sent_int_8_udp(gs_percent_batt);  
   udp.endPacket();
   udp.flush();
   udp.stop();
@@ -696,24 +704,26 @@ void sent_msg_12_udp()
 {
 
   udp.beginPacket(IPAddress(192,168,1,44),5000);
-  udp.write(stx);
-  udp.write(12);
-  udp.write(gs_fix_type);
+  sent_int_8_udp(stx);
+  sent_int_8_udp(12);
+  sent_int_8_udp(gs_fix_type);
+  sent_int_8_udp(gs_num_sat);
+  sent_int_32_udp(gs_lat);
+  sent_int_32_udp(gs_lon);
   sent_int_16_udp(gs_hdop);
-  udp.write(gs_num_sat);
-  sent_int_16_udp(gs_volt_batt);
   udp.endPacket();
   udp.flush();
   udp.stop();
 }
+
 
 void sent_msg_13_udp()
 {
   binaryFloat temp;
 
   udp.beginPacket(IPAddress(192,168,1,44),5000);
-  udp.write(stx);
-  udp.write(13);
+  sent_int_8_udp(stx);
+  sent_int_8_udp(13);
   sent_float_udp(gs_roll);
   sent_float_udp(gs_pitch);
   sent_float_udp(gs_yaw);
@@ -726,8 +736,8 @@ void sent_msg_13_udp()
 void sent_msg_14_udp()
 {
   udp.beginPacket(IPAddress(192,168,1,44),5000);
-  udp.write(stx);
-  udp.write(14);
+  sent_int_8_udp(stx);
+  sent_int_8_udp(14);
   sent_float_udp(gs_alt);
   sent_int_16_udp(gs_heading);
   sent_float_udp(gs_ground_speed);
@@ -739,14 +749,14 @@ void sent_msg_14_udp()
 void sent_msg_15_udp()
 {
   udp.beginPacket(IPAddress(192,168,1,44),5000);
-  udp.write(stx);
-  udp.write(15);
-  
+  sent_int_8_udp(stx);
+  sent_int_8_udp(15);
+
   for(int i=0;i<=7;i++)
   {  
     sent_int_16_udp(gs_ch_raw[i]);
   } 
-  
+
   udp.endPacket();
   udp.flush();
   udp.stop();
@@ -758,6 +768,12 @@ int read_int16(byte data1, byte data2)
 {
   return (data1 << 8)  + data2 ;
 }
+
+
+
+
+
+
 
 
 

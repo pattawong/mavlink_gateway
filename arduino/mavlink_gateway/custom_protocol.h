@@ -18,12 +18,17 @@ static boolean gs_mavlink = false;
 //Msg ID 11
 static String  gs_flight_mode;
 static uint8_t  gs_arm;
+static uint16_t gs_volt_batt;
+static uint16_t gs_current_batt;
+static uint8_t gs_percent_batt;
 
 //Msg ID 12
 static uint8_t gs_fix_type;
 static uint16_t gs_hdop;
 static uint8_t gs_num_sat;
-static uint16_t gs_volt_batt;
+static int gs_lat;
+static int gs_lon;
+
 
 //Msg ID 13
 static float gs_roll;

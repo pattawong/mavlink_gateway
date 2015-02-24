@@ -18,7 +18,7 @@ import mavutil
         
 
 # create a mavlink instance
-mav1 = mavutil.mavlink_connection("COM50", 57600)
+mav1 = mavutil.mavlink_connection("COM12", 57600)
  
 print("Waiting for HEARTBEAT")
 #mav1.wait_heartbeat()

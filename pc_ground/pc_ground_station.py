@@ -50,15 +50,20 @@ while 1:
             mav_mode = recv_data[2:11]
             mav_type = ord(recv_data[11])
             mav_arm = ord(recv_data[12])
-            print "MODE : "+mav_mode + " TYPE : "+str(mav_type) + " ARMED : "+str(mav_arm) 
+            mav_volt = ord(recv_data[13])*256 + ord(recv_data[14])
+            mav_current = ord(recv_data[15])*256 + ord(recv_data[16])
+            mav_percent = ord(recv_data[17])
+            print "MODE : "+mav_mode + " TYPE : "+str(mav_type) + " ARMED : "+str(mav_arm) +" VOLT : "+str(mav_volt/1000.0) +" I : "+str(mav_current/100.0) + " % : "+str(mav_percent)
 
         #MSG ID 12
         if ord(recv_data[1]) == 12:
             mav_fix_type = ord(recv_data[2])
-            mav_hdop = ord(recv_data[3])*256 + ord(recv_data[4])
-            mav_num_sat = ord(recv_data[5])
-            mav_volt_bat = ord(recv_data[6])*256 + ord(recv_data[7])
-            print "GPS FIX TYPE : "+ str(mav_fix_type) +" HDOP : "+ str(mav_hdop) + " Num Sat. : " + str(mav_num_sat)+ " Voltage : "+ str(mav_volt_bat)
+            mav_num_sat = ord(recv_data[3])
+            mav_lat = (ord(recv_data[4])*pow(2,24) + ord(recv_data[5])*pow(2,16) + ord(recv_data[6])*pow(2,8) + ord(recv_data[7]))/10000000.0
+            mav_lon = (ord(recv_data[8])*pow(2,24) + ord(recv_data[9])*pow(2,16) + ord(recv_data[10])*pow(2,8) + ord(recv_data[11]))/10000000.0
+            mav_hdop = ord(recv_data[12])*256 + ord(recv_data[13])
+ 
+            print "GPS FIX TYPE : "+ str(mav_fix_type) + " Num Sat. : " + str(mav_num_sat)+" HDOP : "+ str(mav_hdop) + " Lat : "+ str(mav_lat)+ " Lon : "+ str(mav_lon)
      
         #MSG ID 13
         if ord(recv_data[1]) == 13:
