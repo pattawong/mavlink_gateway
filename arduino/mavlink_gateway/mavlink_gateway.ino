@@ -17,7 +17,12 @@
 // Configurations
 #include "custom_protocol.h"
 
-#define VERSION "v2.1"
+//uIP
+#include <UIPEthernet.h>
+
+EthernetUDP udp;
+
+#define VERSION "v3.0"
 
 //define baudrate
 #define GROUNDSTATION_SPEED 57600
@@ -55,6 +60,8 @@ FastSerialPort2(Serial2);
 byte stx = 0xFE;
 //Enable/Disable Stream command from GCS
 boolean stream_enable = false;
+//Enable/Disable Stream to PC
+boolean pc_enable = true;
 
 typedef union {
   float floatingPoint;
@@ -69,6 +76,12 @@ void setup()
   Serial1.begin(TELEMETRY_SPEED); //APM TX1,RX1
   Serial2.begin(GROUNDSTATION_SPEED); //Portable Ground TX2,RX2
 
+  //Setup Ethernet
+  uint8_t mac[6] = {  
+    0x00,0x01,0x02,0x03,0x04,0x05             };
+
+  Ethernet.begin(mac,IPAddress(192,168,1,6));
+
   //Setup MAVLink Port
   //mavlink_comm_0_port = &Serial;
   mavlink_comm_1_port = &Serial1;
@@ -76,9 +89,8 @@ void setup()
   //Setup MAVLink Timer for telemetry status checking every 1000ms 
   timer.setInterval(1000, HeartbeatTimer);
 
-
   //Initialize System ID,Component ID
-  mavlink_system.sysid = 1; // System ID, 1-255
+  mavlink_system.sysid = 2; // System ID, 1-255
   mavlink_system.compid = 1; // Component/Subsystem ID, 1-255
 
   //Request MAVLink Data Stream
@@ -104,20 +116,31 @@ void loop()
    time = millis();
    }*/
 
+
   //1 Hz loop
   if(millis()-time_1hz>=1000)
   {
+    if(pc_enable==true)
+    {
+      sent_msg_11_udp();
+    }
     if(stream_enable==true)
     {
       sent_msg_11();
       sent_msg_12();
     }
+    
     time_1hz = millis();
   }
 
   //5 Hz loop
   if(millis()-time_5hz>=200)
-  {
+  { 
+//    mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,gs_mav_system, gs_mav_component , 1100 , 1200 , 1300 , 1400 , 1500 , 1600 , 1700 , 1800 ); //Sent RC Override
+    if(pc_enable==true)
+    {
+      sent_msg_13_udp();
+    }
     if(stream_enable==true)
     {
       sent_msg_13();
@@ -290,23 +313,24 @@ void request_mavlink_rates()
     MAV_DATA_STREAM_POSITION,
     MAV_DATA_STREAM_EXTRA1, 
     MAV_DATA_STREAM_EXTRA2,
-    MAV_DATA_STREAM_EXTRA3                                          };
+    MAV_DATA_STREAM_EXTRA3                                                    };
 
   const uint16_t MAVRates[maxStreams] = {
-    0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05        };
+    0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05                  };
 
 
-
+/*
   //Request MAVLink Data Stream
   for (int i=0; i < maxStreams; i++) {
     mavlink_msg_request_data_stream_send(MAVLINK_COMM_1,
     gs_mav_system, gs_mav_component,
     MAVStreams[i], MAVRates[i], 1); 
-  }
+  }*/
+  
   //Request All Data Stream at 5 Hz
-  //mavlink_msg_request_data_stream_send(MAVLINK_COMM_1,
-  //1, 1,
-  //MAV_DATA_STREAM_ALL,0x05, 1); //MAVRates[i]
+  mavlink_msg_request_data_stream_send(MAVLINK_COMM_1,
+  1, 1,
+  MAV_DATA_STREAM_ALL,0x05, 1); //MAVRates[i]
 }
 
 //Collect msg from portable ground station
@@ -314,9 +338,10 @@ void read_ground()
 {
   while(Serial2.available() > 0) { 
     uint8_t c = Serial2.read();
-    Serial.print(c);
+    //Serial.print(c);
     if (c==stx)
     {
+      process_gs();
       clear_gs();
       gs_count = 0;
       gs_msg[gs_count] = stx;
@@ -332,7 +357,7 @@ void read_ground()
     }
   }
 
-  process_gs();
+  //process_gs();
 }
 
 //Process collected msg from portable ground station
@@ -348,20 +373,41 @@ void process_gs()
      Serial.print(String(gs_msg[1], HEX));
      Serial.print(" ");
      Serial.println(String(gs_msg[2], HEX));*/
+     Serial.print("\ncmd_id : ");
+     Serial.println(gs_msg[1]);
     switch (gs_msg[1]) {
-    case 0x00:
+/*    case 0x00:
       //Start Req
       Serial.println("Req Start");
       stream_enable = true;
-      clear_gs();
+      
       break;
     case 0x01:
       //Stop Req
       Serial.println("Req Stop");
       stream_enable = false;
-      clear_gs();
+      
+      break;
+  */  case 0x32: //RC Override
+      int rc_override[] = {
+        0,0,0,0,0,0,0,0      }; 
+      rc_override[0] = read_int16(gs_msg[2],gs_msg[3]);
+      rc_override[1] = read_int16(gs_msg[4],gs_msg[5]);
+      rc_override[2] = read_int16(gs_msg[6],gs_msg[7]);
+      rc_override[3] = read_int16(gs_msg[8],gs_msg[9]);
+      Serial.print("RC Override Recv : ");
+      for(int i=0;i<8;i++)
+      {
+        Serial.print(rc_override[i]);
+        Serial.print(" ");
+      }
+      Serial.print("\n");
+      //mavlink_msg_rc_channels_override_send(MAVLINK_COMM_1,gs_mav_system, gs_mav_component , rc_override[0] , rc_override[1] , rc_override[2] , rc_override[3] , 0 , 0 , 0 , 0 ); //Sent RC Override
+
       break;
     }
+    
+clear_gs();
   }
 }
 
@@ -443,6 +489,10 @@ void read_mavlink(){
           gs_pitch = ToDeg(mavlink_msg_attitude_get_pitch(&msg));
           gs_yaw = ToDeg(mavlink_msg_attitude_get_yaw(&msg));
 
+          Serial.print("ATITTUDE ");
+          Serial.print(ToDeg(mavlink_msg_attitude_get_pitch(&msg)));
+          Serial.print(ToDeg(mavlink_msg_attitude_get_roll(&msg)));
+          Serial.println(ToDeg(mavlink_msg_attitude_get_yaw(&msg)));
           //ToDeg(mavlink_msg_attitude_get_pitchspeed(&msg)); //Pitch Speed
           //ToDeg(mavlink_msg_attitude_get_rollspeed(&msg)); //Roll Speed
           //ToDeg(mavlink_msg_attitude_get_yawspeed(&msg)); //Yaw Speed
@@ -469,24 +519,25 @@ void read_mavlink(){
           gs_ch_raw[5] = mavlink_msg_rc_channels_raw_get_chan6_raw(&msg);
           gs_ch_raw[6] = mavlink_msg_rc_channels_raw_get_chan7_raw(&msg);
           gs_ch_raw[7] = mavlink_msg_rc_channels_raw_get_chan8_raw(&msg);
-          /*
-            Serial.print("RC_CHANNELS_RAW  : ");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan1_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan2_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan3_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan4_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan5_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan6_raw(&msg));
-           Serial.print(",");
-           Serial.print(mavlink_msg_rc_channels_raw_get_chan7_raw(&msg));
-           Serial.print(",");
-           Serial.println(mavlink_msg_rc_channels_raw_get_chan8_raw(&msg));*/
-        }
+/*
+          Serial.print("RC_CHANNELS_RAW  : ");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan1_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan2_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan3_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan4_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan5_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan6_raw(&msg));
+          Serial.print(",");
+          Serial.print(mavlink_msg_rc_channels_raw_get_chan7_raw(&msg));
+          Serial.print(",");
+          Serial.println(mavlink_msg_rc_channels_raw_get_chan8_raw(&msg));
+*/  
+      }
         break;
 
       case MAVLINK_MSG_ID_COMMAND_ACK :
@@ -522,5 +573,60 @@ void read_mavlink(){
   packet_drops += status.packet_rx_drop_count;
   parse_error += status.parse_error;
 }
+
+void sent_msg_11_udp()
+{
+  udp.beginPacket(IPAddress(192,168,1,43),5000);
+  udp.write(stx);
+  udp.write(11);
+  udp.print(gs_flight_mode);
+  udp.write(gs_mav_type);
+  udp.write(gs_arm);
+  udp.endPacket();
+  udp.flush();
+  udp.stop();
+}
+
+void sent_msg_13_udp()
+{
+  binaryFloat temp;
+
+  udp.beginPacket(IPAddress(192,168,1,43),5000);
+  udp.write(stx);
+  udp.write(13);
+
+  temp.floatingPoint = gs_roll;
+  udp.write(temp.binary[3]);
+  udp.write(temp.binary[2]);
+  udp.write(temp.binary[1]);
+  udp.write(temp.binary[0]);
+
+  temp.floatingPoint = gs_pitch;
+  udp.write(temp.binary[3]);
+  udp.write(temp.binary[2]);
+  udp.write(temp.binary[1]);
+  udp.write(temp.binary[0]);
+
+  temp.floatingPoint = gs_yaw;
+  udp.write(temp.binary[3]);
+  udp.write(temp.binary[2]);
+  udp.write(temp.binary[1]);
+  udp.write(temp.binary[0]);
+
+  udp.endPacket();
+  udp.flush();
+  udp.stop();
+}
+
+//Implement by Thanat Tothong
+int read_int16(byte data1, byte data2)
+{
+  return (data1 << 8)  + data2 ;
+}
+
+
+
+
+
 
 
