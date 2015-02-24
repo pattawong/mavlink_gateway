@@ -1,0 +1,130 @@
+GLOBAL_POSITION_INT {time_boot_ms : 1231535, lat : 0, lon : 0, alt : 3464830, relative_alt : 1610, vx : 0, vy : 0, vz : 0, hdg : 10793}
+ATTITUDE {time_boot_ms : 1231615, roll : -0.00958372000605, pitch : 0.0176236685365, yaw : 1.8840495348, rollspeed : 6.92270696163e-05, pitchspeed : 0.00108264386654, yawspeed : 0.000322949141264}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.62000000477, climb : 0.019999999553}
+RAW_IMU {time_usec : 1229145105, xacc : 2, yacc : 22, zacc : -1002, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -150, ymag : -461, zmag : 161}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 238719127, lon : 1191848243, alt : 3464900, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1229165123, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1231715, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 4}
+GLOBAL_POSITION_INT {time_boot_ms : 1231755, lat : 0, lon : 0, alt : 3464900, relative_alt : 1620, vx : 0, vy : 0, vz : 0, hdg : 10794}
+ATTITUDE {time_boot_ms : 1231835, roll : -0.00998059753329, pitch : 0.0174337737262, yaw : 1.88416564465, rollspeed : 0.00194877386093, pitchspeed : 0.00181362777948, yawspeed : -0.000501096248627}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.62000000477, climb : 0.019999999553}
+RAW_IMU {time_usec : 1229365180, xacc : 2, yacc : 19, zacc : -1005, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -151, ymag : -460, zmag : 167}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242253930, lon : 1194136561, alt : 3562280, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1229385252, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1231935, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 16}
+GLOBAL_POSITION_INT {time_boot_ms : 1231975, lat : 0, lon : 0, alt : 3562350, relative_alt : 1640, vx : 0, vy : 0, vz : 0, hdg : 10797}
+ATTITUDE {time_boot_ms : 1232055, roll : -0.00992509257048, pitch : 0.0172892529517, yaw : 1.88448035717, rollspeed : 0.00144359096885, pitchspeed : 0.00041507743299, yawspeed : -0.000419154763222}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.64999997616, climb : 0.019999999553}
+RAW_IMU {time_usec : 1229585375, xacc : 3, yacc : 23, zacc : -1002, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -149, ymag : -459, zmag : 164}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242256572, lon : 1194141211, alt : 3562350, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1229605183, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1232155, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 2}
+GLOBAL_POSITION_INT {time_boot_ms : 1232195, lat : 0, lon : 0, alt : 3583120, relative_alt : 1650, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1232275, roll : -0.0100743435323, pitch : 0.0175113454461, yaw : 1.88461256027, rollspeed : 0.0017046444118, pitchspeed : 0.000708986073732, yawspeed : -0.00103598833084}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.65999996662, climb : 0.019999999553}
+RAW_IMU {time_usec : 1229805194, xacc : 2, yacc : 22, zacc : -1005, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -148, ymag : -459, zmag : 161}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243009149, lon : 1194956792, alt : 3583120, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1229825202, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1232375, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 4}
+GLOBAL_POSITION_INT {time_boot_ms : 1232415, lat : 0, lon : 0, alt : 3583200, relative_alt : 1670, vx : 0, vy : 0, vz : 0, hdg : 10797}
+ATTITUDE {time_boot_ms : 1232495, roll : -0.00989051349461, pitch : 0.0172823816538, yaw : 1.88436377048, rollspeed : 0.00126297399402, pitchspeed : 0.00130962021649, yawspeed : -0.00103867053986}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.67999994755, climb : 0.0299999993294}
+RAW_IMU {time_usec : 1230025184, xacc : 2, yacc : 21, zacc : -1002, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -150, ymag : -461, zmag : 163}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243014735, lon : 1194966079, alt : 3583270, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1230045189, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1232595, port : 0, chan1_raw : 1502, chan2_raw : 1498, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 27}
+GLOBAL_POSITION_INT {time_boot_ms : 1232635, lat : 0, lon : 0, alt : 3583270, relative_alt : 1680, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1232715, roll : -0.00995417498052, pitch : 0.0172069203109, yaw : 1.88437378407, rollspeed : 0.000811263918877, pitchspeed : 0.00109971687198, yawspeed : -0.00107839331031}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.67999994755, climb : 0.0299999993294}
+RAW_IMU {time_usec : 1230245056, xacc : 2, yacc : 21, zacc : -1002, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -150, ymag : -461, zmag : 163}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243017528, lon : 1194970722, alt : 3583350, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1230265462, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1232815, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 4}
+GLOBAL_POSITION_INT {time_boot_ms : 1232855, lat : 0, lon : 0, alt : 3583350, relative_alt : 1680, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1232935, roll : -0.0101724090055, pitch : 0.0170593019575, yaw : 1.88427257538, rollspeed : 0.00072180852294, pitchspeed : 0.000566232949495, yawspeed : -0.00034487247467}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.67999994755, climb : 0.019999999553}
+RAW_IMU {time_usec : 1230465055, xacc : 0, yacc : 21, zacc : -1005, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -148, ymag : -459, zmag : 161}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243020322, lon : 1194975366, alt : 3583430, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1230485086, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1233035, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 2}
+GLOBAL_POSITION_INT {time_boot_ms : 1233075, lat : 0, lon : 0, alt : 3583430, relative_alt : 1680, vx : 0, vy : 0, vz : 0, hdg : 10795}
+ATTITUDE {time_boot_ms : 1233155, roll : -0.0101852240041, pitch : 0.0169893484563, yaw : 1.88395369053, rollspeed : 0.000499606132507, pitchspeed : 0.000102171674371, yawspeed : -0.000761181116104}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.68999993801, climb : 0.019999999553}
+RAW_IMU {time_usec : 1230685204, xacc : 1, yacc : 24, zacc : -1004, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -148, ymag : -460, zmag : 161}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 245864280, lon : 1196555337, alt : 3662840, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1230705245, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1233255, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 23}
+GLOBAL_POSITION_INT {time_boot_ms : 1233295, lat : 0, lon : 0, alt : 3662840, relative_alt : 1690, vx : 0, vy : 0, vz : 0, hdg : 10794}
+ATTITUDE {time_boot_ms : 1233375, roll : -0.00997117068619, pitch : 0.0172181036323, yaw : 1.88405430317, rollspeed : 0.00143897533417, pitchspeed : 0.00137881375849, yawspeed : -0.00030829757452}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.69999992847, climb : 0.0299999993294}
+RAW_IMU {time_usec : 1230905060, xacc : 2, yacc : 23, zacc : -1003, xgyro : 0, ygyro : 0, zgyro : -1, xmag : -151, ymag : -459, zmag : 169}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243025908, lon : 1194984655, alt : 3583580, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1230925289, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1233475, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 14}
+GLOBAL_POSITION_INT {time_boot_ms : 1233515, lat : 0, lon : 0, alt : 3583580, relative_alt : 1700, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1233595, roll : -0.00975476577878, pitch : 0.0169944055378, yaw : 1.88429629803, rollspeed : 4.86522912979e-05, pitchspeed : 0.001395188272, yawspeed : 8.98092985153e-05}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.68999993801, climb : 0.019999999553}
+RAW_IMU {time_usec : 1231125334, xacc : 1, yacc : 22, zacc : -1004, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -151, ymag : -460, zmag : 168}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 243028701, lon : 1194989300, alt : 3583660, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1231145216, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1233695, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 1}
+GLOBAL_POSITION_INT {time_boot_ms : 1233735, lat : 0, lon : 0, alt : 3583660, relative_alt : 1690, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1233815, roll : -0.00987100694329, pitch : 0.0172019302845, yaw : 1.88427293301, rollspeed : 0.000535435974598, pitchspeed : 0.00141460448503, yawspeed : -0.000637240707874}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.68999993801, climb : 0.019999999553}
+RAW_IMU {time_usec : 1231345387, xacc : 3, yacc : 23, zacc : -1004, xgyro : 1, ygyro : 1, zgyro : 0, xmag : -151, ymag : -462, zmag : 164}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 245872977, lon : 1196569508, alt : 3663080, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1231365126, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1233915, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 2}
+GLOBAL_POSITION_INT {time_boot_ms : 1233956, lat : 0, lon : 0, alt : 3663080, relative_alt : 1690, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1234035, roll : -0.00980491377413, pitch : 0.0174993742257, yaw : 1.88426470757, rollspeed : 0.00187543779612, pitchspeed : 0.000793762505054, yawspeed : -0.000297743827105}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.68999993801, climb : 0.019999999553}
+RAW_IMU {time_usec : 1231565164, xacc : 2, yacc : 24, zacc : -1004, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -149, ymag : -459, zmag : 162}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 245875876, lon : 1196574232, alt : 3663160, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1231585380, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1234135, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1016, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 3}
+GLOBAL_POSITION_INT {time_boot_ms : 1234175, lat : 0, lon : 0, alt : 3663160, relative_alt : 1690, vx : 0, vy : 0, vz : 0, hdg : 10795}
+ATTITUDE {time_boot_ms : 1234255, roll : -0.00975217111409, pitch : 0.0170037895441, yaw : 1.88409650326, rollspeed : 0.000336147844791, pitchspeed : 0.000617377460003, yawspeed : -9.81092453003e-05}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.69999992847, climb : 0.019999999553}
+RAW_IMU {time_usec : 1231785370, xacc : 4, yacc : 21, zacc : -998, xgyro : 0, ygyro : 1, zgyro : -1, xmag : -150, ymag : -460, zmag : 165}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 245878774, lon : 1196578956, alt : 3663240, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1231805911, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1234356, port : 0, chan1_raw : 1502, chan2_raw : 1498, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 41}
+GLOBAL_POSITION_INT {time_boot_ms : 1234395, lat : 0, lon : 0, alt : 3566330, relative_alt : 1690, vx : 0, vy : 0, vz : 0, hdg : 10795}
+ATTITUDE {time_boot_ms : 1234475, roll : -0.00986034329981, pitch : 0.0167995169759, yaw : 1.88417756557, rollspeed : 0.000704944133759, pitchspeed : 0.00100475363433, yawspeed : -0.000317201018333}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.69999992847, climb : 0.019999999553}
+RAW_IMU {time_usec : 1232005040, xacc : 3, yacc : 22, zacc : -1001, xgyro : 0, ygyro : 1, zgyro : -1, xmag : -153, ymag : -461, zmag : 169}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242401024, lon : 1194318579, alt : 3566330, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1232025066, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1234575, port : 0, chan1_raw : 1502, chan2_raw : 1498, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 3}
+GLOBAL_POSITION_INT {time_boot_ms : 1234615, lat : 0, lon : 0, alt : 3566400, relative_alt : 1710, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1234695, roll : -0.00977368559688, pitch : 0.0164286699146, yaw : 1.88436663151, rollspeed : 0.000853165984154, pitchspeed : 0.000965097919106, yawspeed : -0.000153258442879}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.70999991894, climb : 0.019999999553}
+RAW_IMU {time_usec : 1232225143, xacc : 2, yacc : 21, zacc : -1002, xgyro : 0, ygyro : 1, zgyro : 0, xmag : -150, ymag : -460, zmag : 159}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242406352, lon : 1194327884, alt : 3566470, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1232245166, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1234795, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1502, rssi : 46}
+GLOBAL_POSITION_INT {time_boot_ms : 1234835, lat : 0, lon : 0, alt : 3566470, relative_alt : 1710, vx : 0, vy : 0, vz : 0, hdg : 10797}
+ATTITUDE {time_boot_ms : 1234915, roll : -0.00972302164882, pitch : 0.0163836441934, yaw : 1.88449323177, rollspeed : 0.00123408436775, pitchspeed : 0.0014221072197, yawspeed : -0.000663585960865}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.70999991894, climb : 0.019999999553}
+RAW_IMU {time_usec : 1232445198, xacc : 2, yacc : 25, zacc : -1005, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -151, ymag : -461, zmag : 164}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242409016, lon : 1194332537, alt : 3566550, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1232465079, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1235015, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1016, chan4_raw : 1502, chan5_raw : 1018, chan6_raw : 1502, chan7_raw : 1503, chan8_raw : 1503, rssi : 3}
+GLOBAL_POSITION_INT {time_boot_ms : 1235055, lat : 0, lon : 0, alt : 3566550, relative_alt : 1710, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1235135, roll : -0.0097378725186, pitch : 0.0164113938808, yaw : 1.88438200951, rollspeed : -0.000199560075998, pitchspeed : 0.00200249440968, yawspeed : -0.000965498387814}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.7199999094, climb : 0.019999999553}
+RAW_IMU {time_usec : 1232665025, xacc : 1, yacc : 23, zacc : -1000, xgyro : 1, ygyro : 0, zgyro : 0, xmag : -148, ymag : -459, zmag : 163}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242411680, lon : 1194337190, alt : 3566620, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1232685162, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1235235, port : 0, chan1_raw : 1502, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 21}
+GLOBAL_POSITION_INT {time_boot_ms : 1235275, lat : 0, lon : 0, alt : 3566620, relative_alt : 1720, vx : 0, vy : 0, vz : 0, hdg : 10796}
+ATTITUDE {time_boot_ms : 1235355, roll : -0.00960200279951, pitch : 0.0164265166968, yaw : 1.8842073679, rollspeed : 0.000687908381224, pitchspeed : 0.000508524477482, yawspeed : -0.000695411115885}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.70999991894, climb : 0.019999999553}
+RAW_IMU {time_usec : 1232885171, xacc : 2, yacc : 21, zacc : -1002, xgyro : 2, ygyro : 1, zgyro : 0, xmag : -149, ymag : -460, zmag : 161}
+GPS_RAW_INT {time_usec : 0, fix_type : 1, lat : 242414343, lon : 1194341843, alt : 3566690, eph : 9999, epv : 65535, vel : 0, cog : 0, satellites_visible : 0}
+SERVO_OUTPUT_RAW {time_usec : 1232905358, port : 0, servo1_raw : 1016, servo2_raw : 1016, servo3_raw : 1016, servo4_raw : 1016, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
+RC_CHANNELS_RAW {time_boot_ms : 1235455, port : 0, chan1_raw : 1501, chan2_raw : 1499, chan3_raw : 1017, chan4_raw : 1502, chan5_raw : 1017, chan6_raw : 1503, chan7_raw : 1503, chan8_raw : 1503, rssi : 4}
+GLOBAL_POSITION_INT {time_boot_ms : 1235495, lat : 0, lon : 0, alt : 3566690, relative_alt : 1710, vx : 0, vy : 0, vz : 0, hdg : 10795}
+ATTITUDE {time_boot_ms : 1235575, roll : -0.00961489602923, pitch : 0.01652463153, yaw : 1.88417112827, rollspeed : 0.000338409096003, pitchspeed : 0.000547092407942, yawspeed : -8.94814729691e-06}
+VFR_HUD {airspeed : 0.0, groundspeed : 0.0, heading : 107, throttle : 0, alt : 1.70999991894, climb : 0.00999999977648}
+RAW_IMU {time_usec : 1233105067, xacc : 2, yacc : 21, zacc : -1005, xgyro : 0, ygyro : 0, zgyro : 0, xmag : -150, ymag : -461, zmag : 165}

@@ -23,7 +23,7 @@ static uint8_t  gs_arm;
 static uint8_t gs_fix_type;
 static uint16_t gs_hdop;
 static uint8_t gs_num_sat;
-static uint8_t gs_volt_batt;
+static uint16_t gs_volt_batt;
 
 //Msg ID 13
 static float gs_roll;
